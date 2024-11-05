@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import pickle
+import nltk
+from nltk.corpus import stopwords
 from bpemb import BPEmb
 from sklearn.feature_extraction.text import CountVectorizer
 
@@ -30,6 +32,7 @@ def get_example():
   example = pd.read_csv('example.csv')
   return example
 
+nltk.download('stopwords')
 def process(text):
   text = text.replace('%', ' percent')
   text = text.replace('$', ' dollar ')
